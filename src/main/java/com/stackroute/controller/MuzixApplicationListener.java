@@ -28,24 +28,24 @@ class MuzixApplicationListener implements ApplicationListener<ContextRefreshedEv
         this.trackRepository = trackRepository;
     }
 
-//    @Value("${track.id}")
-//    private int trackid;
-//
-//    @Value("${track.name}")
-//    private String trackName;
-//
-//    @Value("${track.comments}")
-//    private String comments;
+      @Value("${track.id}")
+      private int trackid;
+  
+      @Value("${track.name}")
+      private String trackName;
+  
+      @Value("${track.comments}")
+      private String comments;
 
-//    Track track=new Track(trackid,trackName,comments);
+      Track track=new Track(trackid,trackName,comments);
 
     @PostConstruct
     public void saveTrack(){
         //trackRepository.save(track);
     }
 
-    //@Autowired
-    //private Environment environment;
+      @Autowired
+      private Environment environment;
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
@@ -57,10 +57,10 @@ class MuzixApplicationListener implements ApplicationListener<ContextRefreshedEv
         trackRepository.save(track3);
         Track track4=new Track(4,"Song4","DD");
         trackRepository.save(track4);
-       // Track track=new Track(trackid,trackName,comments);
-        //trackRepository.save(track);
-        //Track track5=new Track(Integer.parseInt(environment.getProperty("track.id")));
-       // trackRepository.save(track5);
+        Track track=new Track(trackid,trackName,comments);
+        trackRepository.save(track);
+        Track track5=new Track(Integer.parseInt(environment.getProperty("track.id")));
+        trackRepository.save(track5);
 
     }
 }
